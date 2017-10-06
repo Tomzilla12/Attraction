@@ -94,4 +94,19 @@ function renderControls() {
   textSize(12);
   text(massText, mouseX - textWidth(massText) / 2, mouseY - 10);
   pop();
+
+  
+  randomG = $(".controls .formgroup.gravitation .checkbox input").is(':checked');
+  var gRounded;
+  var gText;
+  if (randomG) {
+    G = random(2, 5);
+    gRounded = floor(G * 100) / 100;
+    gText = "Random";
+  } else {
+    G = $(".controls .formgroup.gravitation .input input").val();
+    gRounded = floor(G * 100) / 100;
+    gText = gRounded;
+  }
+  $(".controls .formgroup.gravitation .value").html(gText);
 }
