@@ -25,7 +25,7 @@ function Particle(x, y, mass) {
     }
 
     this.draw = function() {
-        strokeWeight(this.mass);
+        strokeWeight(Math.abs(this.mass));
         point(this.pos.x, this.pos.y);
     }
 }

@@ -9,7 +9,7 @@ function Attractor(x, y, mass) {
         } else {
             stroke(255, 0, 0);
         }
-        strokeWeight(this.mass);
+        strokeWeight(Math.abs(this.mass));
         noFill();
         point(this.pos.x, this.pos.y);
 

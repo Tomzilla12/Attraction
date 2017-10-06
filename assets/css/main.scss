@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  font-family: Sans, "The Sans", sans-serif;
 
   & > div {
     background-color: #000;
@@ -20,11 +21,63 @@ body {
       text-align: right;
     }
 
+    & > p {
+        margin: 0;
+        text-decoration: underline;
+    }
     p {
       margin: 0;
     }
-    & > p {
-      text-decoration: underline;
+    
+    .formgroup {
+      padding: 10px 0;
     }
   }
+}
+
+kbd {
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 1em;
+  padding: 0.2rem 0.4rem;
+  font-size: 90%;
+  color: #fff;
+  background-color: #212529;
+  border-radius: 0.2rem;
+}
+kbd kbd {
+  padding: 0;
+  font-size: 100%;
+  font-weight: bold;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  width: 160px;
+  height: 5px;
+  margin: 5px 0;
+  background-color: #212529;
+  background-size: 150px 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  outline: none;
+  display: block;
+}
+input[type=range]::-webkit-slider-thumb {
+ -webkit-appearance: none;
+ width: 15px;
+ height: 10px;
+ background-color: #5F6A75;
+ position: relative;
+ z-index: 3;
+} 
+input[type=range]::-webkit-slider-thumb:after {
+ content: " ";
+ width: 160px;
+ height: 10px;
+ position: absolute;
+ z-index: 1;
+ right: 20px;
+ top: 5px;
+ background: #A6BACF;
 }
