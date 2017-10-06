@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+
+  & > div {
+    background-color: #000;
+    color: #fff;
+    font-size: 12px;
+    position: absolute;
+    padding: 10px;
+    cursor: default;
+
+    &.div_stats {
+      left: 0;
+      top: 0;
+      text-align: left;
+    }
+    &.div_controls {
+      right: 0;
+      top: 0;
+      text-align: right;
+    }
+
+    p {
+      margin: 0;
+    }
+    & > p {
+      text-decoration: underline;
+    }
+  }
+}
