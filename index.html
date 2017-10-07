@@ -31,7 +31,7 @@
       <div class="controls">
         <p><kbd>a</kbd> = add Attractor</p>
         <p><kbd>r</kbd> = add Repellent</p>
-        <p><kbd>p</kbd> = add Particle</p>
+        <p><kbd>p</kbd> = add 10 Particles</p>
         <div class="formgroup mass">
           <p class="title">Weight for next: <span class="value"></span></p>
           <p class="checkbox"><label>Random: <input type="checkbox" checked /></label></p>
@@ -39,8 +39,14 @@
         </div>
         <div class="formgroup gravitation">
           <p class="title">Gravitation: <span class="value"></span></p>
-          <p class="checkbox"><label>Random: <input type="checkbox" /></label></p>
           <p class="input"><input type="range" min="-10" max="10" value="2" step="0.000001" /></p>
+        </div>
+        <div class="formgroup friction">
+          <p class="title">Friction: <span class="value"></span></p>
+          <p class="input"><input type="range" min="0.99" max="1" value="0.998" step="0.001" /></p>
+        </div>
+        <div class="formgroup alpha">
+          <p class="checkbox"><label>Draw lines: <input type="checkbox" /></label></p>
         </div>
       </div>
     </div>

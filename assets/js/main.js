@@ -1,9 +1,11 @@
-let numberOfParticles = 600;
+let numberOfParticles = 500;
 let particles = [];
 let attractors = [];
 let G = 2;
+let f = 0.998;
 let mass = 4;
 let randomMass = true;
+let drawLines = false;
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
@@ -11,8 +13,12 @@ function setup() {
 }
 
 function draw() {
-  background(0);
-  stroke(255);
+  if (!drawLines) {
+    background(0);
+    stroke(255);
+  } else {
+    stroke(255, 2);
+  }
   strokeWeight(5);
   noFill();
 
@@ -37,23 +43,17 @@ function draw() {
 
 function keyPressed() {
   if (keyCode == 65) {
-    if (randomMass) {
-      attractors.push(new Attractor(mouseX, mouseY, mass));
-    } else {
-      attractors.push(new Attractor(mouseX, mouseY, mass));
-    }
+    attractors.push(new Attractor(mouseX, mouseY, mass));
   } else if (keyCode == 82) {
-    if (randomMass) {
-      attractors.push(new Attractor(mouseX, mouseY, (mass * - 1) - 2));
-    } else {
-      attractors.push(new Attractor(mouseX, mouseY, mass * -1));
-    }
+    attractors.push(new Attractor(mouseX, mouseY, (mass * - 1) - 2));
   } else if (keyCode == 80) {
-    if (randomMass) {
-      particles.push(new Particle(mouseX, mouseY, mass));
-    } else {
-      particles.push(new Particle(mouseX, mouseY, mass));
-    }
+    generateParticles(10);
+  }
+}
+
+function generateParticles(amount) {
+  for (var x = 0; x < amount; x++) {
+    particles.push(new Particle(random(width), random(height), mass));
   }
 }
 
@@ -83,30 +83,35 @@ function renderControls() {
     massText = massRounded;
   }
   $(".controls .formgroup.mass .value").html(massText);
-  push();
-  stroke(255);
-  strokeWeight(mass);
-  noFill();
-  point(mouseX, mouseY);
-  
-  fill(255);
-  noStroke();
-  textSize(12);
-  text(massText, mouseX - textWidth(massText) / 2, mouseY - 10);
-  pop();
+
+  if (!drawLines) {
+    push();
+    stroke(255);
+    strokeWeight(mass);
+    noFill();
+    point(mouseX, mouseY);
+
+    fill(255);
+    noStroke();
+    textSize(12);
+    text(massText, mouseX - textWidth(massText) / 2, mouseY - 10);
+    pop();
+  }
 
   
-  randomG = $(".controls .formgroup.gravitation .checkbox input").is(':checked');
   var gRounded;
   var gText;
-  if (randomG) {
-    G = random(2, 5);
-    gRounded = floor(G * 100) / 100;
-    gText = "Random";
-  } else {
-    G = $(".controls .formgroup.gravitation .input input").val();
-    gRounded = floor(G * 100) / 100;
-    gText = gRounded;
-  }
+  G = $(".controls .formgroup.gravitation .input input").val();
+  gRounded = floor(G * 100) / 100;
+  gText = gRounded;
   $(".controls .formgroup.gravitation .value").html(gText);
+  
+  var fRounded;
+  var fText;
+  f = $(".controls .formgroup.friction .input input").val();
+  fRounded = floor(f * 10000) / 10000;
+  fText = fRounded;
+  $(".controls .formgroup.friction .value").html(fText);
+  
+  drawLines = $(".controls .formgroup.alpha .checkbox input").is(':checked');
 }

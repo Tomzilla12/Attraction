@@ -20,6 +20,7 @@ function Particle(x, y, mass) {
 
     this.update = function() {
         this.pos.add(this.vel);
+        this.vel.mult(f);
         this.vel.add(this.acc);
         this.acc = createVector();
     }
